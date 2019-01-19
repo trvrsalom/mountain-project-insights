@@ -1,11 +1,12 @@
 extends layout
 
 block content
-  script(src='/javascripts/index.js')
   .text-center
     p Enter a mountain project email
     .row.row-center.hide-md.hide-sm.hide-xs
       .col-6
+        if error
+          div.alert.alert-warning #{error}
         form(method="POST", action="/search")#forma
           .input-group
             span.input-addon Email
@@ -14,8 +15,11 @@ block content
               input(type='text', name="email")
             button Search
           p or check out #[a(href="/user/112560680") an example].
+          p= error
     .row.row-center.hide-xl.hide-lg
       .col-12
+        if error
+          div.alert.alert-warning #{error}
         form(method="POST", action="/search")#formc
           .input-group
             span.input-addon Email
@@ -24,8 +28,6 @@ block content
               input(type='text', name="email")
             button(type='button' onclick='submit("#formc")') Search
           p or check out #[a(href="/user/112560680") an example].
-  .loaderdisp(style="display: none; text-align:center;")
-    span.loader.loader-xl
 
 block footer
   div.footer

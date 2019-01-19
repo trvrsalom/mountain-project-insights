@@ -3,4 +3,9 @@ $(document).ready(function() {
     $(".text-center").hide();
     $(".loaderdisp").show();
   });
+
+  $('a').click(function() {
+    $(".text-center").hide();
+    $(".loaderdisp").show();
+  });
 });
