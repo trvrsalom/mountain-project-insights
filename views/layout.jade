@@ -7,10 +7,13 @@ html
     link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.6.3/css/all.css')
     script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
     script(src='https://cdn.shoelace.style/1.0.0-beta24/shoelace.js')
+    script(src='/javascripts/index.js')
   body
     .spacer
     .text-center
       h1 #[a.title(href="/") #{title}]
     .container
       block content
+      .loaderdisp(style="display: none; text-align:center;")
+        span.loader.loader-xl
     block footer

@@ -201,11 +201,15 @@ router.post('/search', function(req, res) {
     }
   }
   request(url, function (error, response, body) {
-    var user = JSON.parse(body);
-    if(req.body.email) {
-      user.email = req.body.email
+    try {
+      var user = JSON.parse(body);
+      if(req.body.email) {
+        user.email = req.body.email
+      }
+      processUser(user, res);
+    } catch (e) {
+      res.render('index', { title: 'Mountain Project Insights', error: "Something went wrong. Maybe you should try again?"});
     }
-    processUser(user, res);
   });
 });
 
