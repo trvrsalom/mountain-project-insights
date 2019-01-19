@@ -1,0 +1,33 @@
+extends layout
+
+mixin list(names, links)
+  ul
+    each val,idx in names
+      - var link = links[idx]
+      li
+        #[a(href= "#{link}") #{val}]
+
+block content
+  .spacer
+  .text-center
+    .spacer
+    .img
+      img(src="#{userAvatar}")
+    .half-spacer
+    p Since #{since}, #[a(href="#{userUrl}") #{name}], has climbed
+    p #[span.big= totalPitches] pitches on #[span.big= routeCounts] routes.
+    p They have climbed over #[span.big= totalHeight] ft.
+    p #{name} usually climbs #[span.big= average], 
+    p but their hardest climb has been #[span.big= hardest].
+    p Some of their favorite climbs are:
+    .row.row-center.left-align
+        mixin list(favs, favLinks)
+
+block footer
+  div.footer
+    
+    p #[a(href="/reset/#{userId}") Reset Cache.] #[br] #[a(href="https://github.com/trvrsalom mountain-project-insights") Contribute.]
+  
+    
+      
+
